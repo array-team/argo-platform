@@ -3494,10 +3494,6 @@ video {
     display: flex;
   }
 
-  .lg\:hidden {
-    display: none;
-  }
-
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -3604,12 +3600,6 @@ video {
     --text-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--text-opacity));
-  }
-
-  .lg\:text-gray-300 {
-    --text-opacity: 1;
-    color: #e2e8f0;
-    color: rgba(226, 232, 240, var(--text-opacity));
   }
 
   .lg\:hover\:text-gray-300:hover {

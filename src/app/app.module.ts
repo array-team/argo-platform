@@ -22,6 +22,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { ArEditorComponent } from "./views/ar-editor/ar-editor.component";
 
 // components for views and layouts
 
@@ -47,6 +48,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { EditorNavbarComponent } from './components/navbars/editor-navbar/editor-navbar.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    ArEditorComponent,
+    EditorNavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
