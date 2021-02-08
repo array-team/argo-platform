@@ -49,6 +49,7 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { EditorNavbarComponent } from './components/navbars/editor-navbar/editor-navbar.component';
+import { EditorViewerComponent } from './views/editor-viewer/editor-viewer.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { EditorNavbarComponent } from './components/navbars/editor-navbar/editor
     ProfileComponent,
     ArEditorComponent,
     EditorNavbarComponent,
+    EditorViewerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
