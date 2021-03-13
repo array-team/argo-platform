@@ -18,7 +18,7 @@ export class EditorViewerComponent implements AfterViewInit {
 
   private cube: THREE.Mesh;
   private scene: THREE.Scene;
-  private  renderer: THREE.WebGLRenderer;
+  private renderer: THREE.WebGLRenderer;
 
   @Input()
   public rotationSpeedX: number = 0.005;
