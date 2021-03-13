@@ -1,5 +1,6 @@
 import { AfterViewInit, ElementRef, Component, OnInit, Input, ViewChild } from '@angular/core';
 import * as THREE from 'three'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-editor-viewer',
@@ -8,6 +9,7 @@ import * as THREE from 'three'
 })
 export class EditorViewerComponent implements AfterViewInit {
   private camera: THREE.PerspectiveCamera;
+  private controls: OrbitControls;
 
   private get canvas() : HTMLCanvasElement {
     return this.canvasRef.nativeElement;
@@ -82,6 +84,8 @@ export class EditorViewerComponent implements AfterViewInit {
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight, true);
     this.canvas.appendChild(this.renderer.domElement);
 
+    this.createControls(this.camera);
+
     let component: EditorViewerComponent = this;
     (function renderer(){
       requestAnimationFrame(renderer);
@@ -95,6 +99,14 @@ export class EditorViewerComponent implements AfterViewInit {
   }
 
   constructor() {
+  }
+
+  private createControls(camera) {
+    this.controls = new OrbitControls(camera, this.renderer.domElement);
+    var self = this;
+    this.controls.addEventListener('change', function() {
+      self.renderer.render(self.scene, self.camera);
+    });
   }
 
   ngAfterViewInit(): void {
