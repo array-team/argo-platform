@@ -3,6 +3,9 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
   },
+  experimental: {
+    extendedSpacingScale: true,
+  },
   purge: {
     enabled: true,
     content: [
