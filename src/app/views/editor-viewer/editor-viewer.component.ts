@@ -104,11 +104,17 @@ export class EditorViewerComponent implements AfterViewInit {
     });
   }
 
-  public AddImageTargetToScene() {
-    const geometry = new THREE.PlaneGeometry(10, 10, 1);
-    const material = new THREE.MeshBasicMaterial({color: 0xffff00, side: THREE.DoubleSide});
+  public AddImageTargetToScene(imgData) {
+    const geometry = new THREE.PlaneGeometry(8, 8, 1);
+    const texture = new THREE.TextureLoader().load(imgData);
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+      map: texture
+    });
     this.imageTarget = new THREE.Mesh(geometry, material);
-    this.imageTarget.rotation.set(Math.PI / 2, 0, 0);
+    this.imageTarget.rotation.set(-Math.PI / 2, 0, 0);
     this.scene.add(this.imageTarget);
   }
 

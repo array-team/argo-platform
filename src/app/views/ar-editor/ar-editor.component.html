@@ -1,5 +1,5 @@
 <div>
-  <app-editor-toolbar></app-editor-toolbar>
+  <app-editor-toolbar (onImageTargetUpload)="setImageTarget($event)"></app-editor-toolbar>
   <div class="relative md:ml-64 bg-gray-200">
     <app-editor-navbar></app-editor-navbar>
     <app-editor-viewer></app-editor-viewer>

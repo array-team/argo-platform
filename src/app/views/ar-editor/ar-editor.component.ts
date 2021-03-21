@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { EditorViewerComponent } from '../editor-viewer/editor-viewer.component'
 
 @Component({
   selector: 'app-ar-editor',
@@ -10,8 +11,13 @@ export class ArEditorComponent implements OnInit {
 
   constructor() { }
 
+  @ViewChild(EditorViewerComponent) editorViewer: EditorViewerComponent;
+
   ngOnInit(): void {
 
   }
 
+  public setImageTarget(event) {
+    this.editorViewer.AddImageTargetToScene(event);
+  }
 }

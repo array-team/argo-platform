@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ArEditorComponent } from '../../views/ar-editor/ar-editor.component'
 
 @Component({
   selector: 'app-editor-toolbar',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorToolbarComponent implements OnInit {
 
-  url = '';
+  @Output() onImageTargetUpload = new EventEmitter<string>();
+  private url = '';
 
   constructor() { }
 
@@ -22,6 +24,7 @@ export class EditorToolbarComponent implements OnInit {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.url = event.target.result as string;
+        this.onImageTargetUpload.emit(this.url);
       }
     }
   }
