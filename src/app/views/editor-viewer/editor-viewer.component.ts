@@ -1,6 +1,6 @@
 import { AfterViewInit, ElementRef, Component, OnInit, Input, ViewChild } from '@angular/core';
 import * as THREE from 'three'
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-editor-viewer',
@@ -68,13 +68,6 @@ export class EditorViewerComponent implements AfterViewInit {
 
     this.camera.position.y = 5;
     this.camera.position.z = 20;
-
-//     const geometry = new THREE.BoxGeometry(1, 1, 1);
-//     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-//     this.cube = new THREE.Mesh(geometry, material);
-//     this.scene.add(this.cube);
-
-    this.AddImageTargetToScene();
   }
 
   private getAspectRatio() {
@@ -92,7 +85,6 @@ export class EditorViewerComponent implements AfterViewInit {
     let component: EditorViewerComponent = this;
     (function renderer(){
       requestAnimationFrame(renderer);
-      //  component.animateCube();
       component.renderer.render(component.scene, component.camera);
     }());
   }
