@@ -19,6 +19,7 @@ export class EditorViewerComponent implements AfterViewInit {
   private canvasRef: ElementRef;
 
   private cube: THREE.Mesh;
+  private imageTarget: THREE.Mesh;
   private scene: THREE.Scene;
   private renderer: THREE.WebGLRenderer;
 
@@ -68,10 +69,12 @@ export class EditorViewerComponent implements AfterViewInit {
     this.camera.position.y = 5;
     this.camera.position.z = 20;
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+//     const geometry = new THREE.BoxGeometry(1, 1, 1);
+//     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+//     this.cube = new THREE.Mesh(geometry, material);
+//     this.scene.add(this.cube);
+
+    this.AddImageTargetToScene();
   }
 
   private getAspectRatio() {
@@ -89,7 +92,7 @@ export class EditorViewerComponent implements AfterViewInit {
     let component: EditorViewerComponent = this;
     (function renderer(){
       requestAnimationFrame(renderer);
-      component.animateCube();
+      //  component.animateCube();
       component.renderer.render(component.scene, component.camera);
     }());
   }
@@ -107,6 +110,14 @@ export class EditorViewerComponent implements AfterViewInit {
     this.controls.addEventListener('change', function() {
       self.renderer.render(self.scene, self.camera);
     });
+  }
+
+  public AddImageTargetToScene() {
+    const geometry = new THREE.PlaneGeometry(10, 10, 1);
+    const material = new THREE.MeshBasicMaterial({color: 0xffff00, side: THREE.DoubleSide});
+    this.imageTarget = new THREE.Mesh(geometry, material);
+    this.imageTarget.rotation.set(Math.PI / 2, 0, 0);
+    this.scene.add(this.imageTarget);
   }
 
   ngAfterViewInit(): void {
