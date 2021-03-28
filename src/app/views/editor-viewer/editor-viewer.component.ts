@@ -1,4 +1,4 @@
-import { AfterViewInit, ElementRef, Component, OnInit, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ElementRef, Component, Input, ViewChild } from '@angular/core';
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -18,46 +18,40 @@ export class EditorViewerComponent implements AfterViewInit {
   @ViewChild('canvas')
   private canvasRef: ElementRef;
 
-  private cube: THREE.Mesh;
   private imageTarget: THREE.Mesh;
   private scene: THREE.Scene;
   private renderer: THREE.WebGLRenderer;
 
   @Input()
-  public rotationSpeedX: number = 0.005;
+  public rotationSpeedX = 0.005;
 
   @Input()
-  public rotationSpeedY: number = 0.01;
+  public rotationSpeedY = 0.01;
 
   @Input()
-  public size: number = 200;
+  public size = 200;
 
   @Input()
-  public cameraZ: number = 3;
+  public cameraZ = 3;
 
   @Input()
-  public fieldOfView: number = 70;
+  public fieldOfView = 70;
 
-  @Input('nearClipping')
-  public nearClippingPane: number = 1;
+  @Input()
+  public nearClippingPane = 1;
 
-  @Input('farClipping')
-  public farClippingPane: number = 1000;
-
-  private animateCube() {
-    this.cube.rotation.x += this.rotationSpeedX;
-    this.cube.rotation.y += this.rotationSpeedY;
-  }
+  @Input()
+  public farClippingPane = 1000;
 
   private createScene() {
     this.scene = new THREE.Scene();
 
     this.scene.background = new THREE.Color(0xeeeeee);
 
-    var gridHelper = new THREE.GridHelper(20, 20, 0xff6666, 0x999999);
+    const gridHelper = new THREE.GridHelper(20, 20, 0xff6666, 0x999999);
     this.scene.add(gridHelper);
 
-    let aspectRatio = this.getAspectRatio();
+    const aspectRatio = this.getAspectRatio();
     this.camera = new THREE.PerspectiveCamera(
       this.fieldOfView,
       aspectRatio,
@@ -82,7 +76,7 @@ export class EditorViewerComponent implements AfterViewInit {
 
     this.createControls(this.camera);
 
-    let component: EditorViewerComponent = this;
+    const component: EditorViewerComponent = this;
     (function renderer(){
       requestAnimationFrame(renderer);
       component.renderer.render(component.scene, component.camera);
@@ -98,8 +92,8 @@ export class EditorViewerComponent implements AfterViewInit {
 
   private createControls(camera) {
     this.controls = new OrbitControls(camera, this.renderer.domElement);
-    var self = this;
-    this.controls.addEventListener('change', function() {
+    const self = this;
+    this.controls.addEventListener('change', () => {
       self.renderer.render(self.scene, self.camera);
     });
   }
@@ -122,8 +116,8 @@ export class EditorViewerComponent implements AfterViewInit {
     this.createScene();
     this.startRenderLooping();
 
-    var self = this;
-    window.addEventListener('resize', function() {
+    const self = this;
+    window.addEventListener('resize', () => {
       self.onWindowResize.call(self);
     }, false);
   }
