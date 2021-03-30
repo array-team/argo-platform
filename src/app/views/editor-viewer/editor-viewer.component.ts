@@ -1,6 +1,7 @@
 import { AfterViewInit, ElementRef, Component, Input, ViewChild } from '@angular/core';
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 @Component({
   selector: 'app-editor-viewer',
@@ -110,6 +111,12 @@ export class EditorViewerComponent implements AfterViewInit {
     this.imageTarget = new THREE.Mesh(geometry, material);
     this.imageTarget.rotation.set(-Math.PI / 2, 0, 0);
     this.scene.add(this.imageTarget);
+  }
+
+  public Add3DModelToScene(modelData) {
+    const loader = new OBJLoader();
+    const object = loader.parse(modelData);
+    this.scene.add(object);
   }
 
   ngAfterViewInit(): void {

@@ -20,4 +20,8 @@ export class ArEditorComponent implements OnInit {
   public setImageTarget(event) {
     this.editorViewer.AddImageTargetToScene(event);
   }
+
+  public set3DModel(event) {
+    this.editorViewer.Add3DModelToScene(event);
+  }
 }
