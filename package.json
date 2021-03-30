@@ -1,7 +1,7 @@
 {
-  "name": "notus-angular",
+  "name": "argo-platform",
   "version": "1.0.0",
-  "description": "Notus Angular - Free Tailwind CSS UI Kit and Admin by Creative Tim.",
+  "description": "ARGO - is to easily create AR effects",
   "repository": "https://github.com/creativetimofficial/notus-angular",
   "license": "MIT",
   "scripts": {
