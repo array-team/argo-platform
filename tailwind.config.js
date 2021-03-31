@@ -1,11 +1,4 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
-  },
-  experimental: {
-    extendedSpacingScale: true,
-  },
   purge: {
     enabled: true,
     content: [
@@ -21,6 +14,22 @@ module.exports = {
     },
   },
   theme: {
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain'
+    },
+    backgroundPosition: {
+      bottom: 'bottom',
+      'bottom-4': 'center bottom 1rem',
+      center: 'center',
+      left: 'left',
+      right: 'right',
+      'right-bottom': 'right bottom',
+      'right-top': 'right top',
+      top: 'top',
+      'top-4': 'center top 1rem',
+    },
     extend: {
       minHeight: {
         "screen-75": "75vh",
@@ -76,8 +85,8 @@ module.exports = {
         "48": "12rem",
       },
       backgroundSize: {
-        full: "100$",
-      },
+        full: "100%",
+      }
     },
   },
   variants: [
@@ -94,5 +103,5 @@ module.exports = {
     "visited",
     "disabled",
   ],
-  plugins: [require("@tailwindcss/custom-forms")],
+  plugins: [require("@tailwindcss/forms")],
 };
