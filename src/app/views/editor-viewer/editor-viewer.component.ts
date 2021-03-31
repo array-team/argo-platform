@@ -52,11 +52,11 @@ export class EditorViewerComponent implements AfterViewInit {
     const gridHelper = new THREE.GridHelper(20, 20, 0xff6666, 0x999999);
     this.scene.add(gridHelper);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(0.75, 0.75, 1.0).normalize();
     this.scene.add(directionalLight);
 
-    const ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
+    const ambientLight = new THREE.AmbientLight(0x666666, 1);
     this.scene.add(ambientLight);
 
     const aspectRatio = this.getAspectRatio();
