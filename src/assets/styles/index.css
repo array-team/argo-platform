@@ -9,7 +9,11 @@
 }
 
 .main-block {
-  background-image: url("../img/ar-info.png"), linear-gradient(to right, #82A7CE, transparent), url("../img/ar-info-bg.png");
+  background-image:
+    url("../img/ar-info.png"),
+    linear-gradient(to right, #accbee, transparent),
+    radial-gradient(circle at right, transparent, #fff),
+    url("../img/ar-info-bg.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
