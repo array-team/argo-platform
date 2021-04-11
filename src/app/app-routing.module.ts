@@ -20,6 +20,7 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { ArEditorComponent } from "./views/ar-editor/ar-editor.component";
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   // admin views
@@ -45,7 +46,7 @@ const routes: Routes = [
     ],
   },
   // no layout views
-  { path: "profile", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: "landing", component: LandingComponent },
   { path: "ar-editor", component: ArEditorComponent },
   { path: "", component: IndexComponent },

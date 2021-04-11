@@ -51,6 +51,9 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { EditorNavbarComponent } from './components/navbars/editor-navbar/editor-navbar.component';
 import { EditorViewerComponent } from './views/editor-viewer/editor-viewer.component';
 import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolbar.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor-service.service';
 
 @NgModule({
   declarations: [
@@ -93,8 +96,19 @@ import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolb
     EditorViewerComponent,
     EditorToolbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+     }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

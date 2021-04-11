@@ -1,11 +1,43 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { ApiService } from '../../../services/api.service';
+
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  
+  form: FormGroup;
+  
+  constructor(
+    private _api: ApiService,
+    private _auth: AuthService,
+    private router: Router,
+    public fb: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      email: ['', Validators.required ],
+      password: ['', Validators.required]
+    });
+  }
+
+  login() {
+    let b = this.form.value;
+    console.log(b);
+    this._api.postTypeRequest('auth/login', b).subscribe((res: any) => {
+      console.log(res);
+      if (res.access_token) {
+        this._auth.setDataInLocalStorage('token', res.access_token)
+        this.router.navigate(['profile'])
+      }
+    }, err => {
+      console.log(err)
+    })
+  }
 }
